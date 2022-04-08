@@ -1,0 +1,60 @@
+{
+	"name"        : "busyphp/form",
+	"type"        : "library",
+	"description" : "BusyPHP自定义表单",
+	"homepage"    : "http://www.harter.cn/?form=BusyPHP&plugin=busyphp/form",
+	"keywords"    : [
+		"自定义表单"
+	],
+	"authors"     : [
+		{
+			"name"  : "busy^life",
+			"email" : "busy.life@qq.com"
+		}
+	],
+	"license"     : "CC-BY-NC-4.0",
+	"require"     : {
+		"busyphp/busyphp" : "^6.0",
+		"ext-json"        : "*"
+	},
+	"require-dev" : {
+		"symfony/var-dumper" : "^4.2"
+	},
+	"autoload"    : {
+		"psr-4" : {
+			"core\\"                        : "core",
+			"app\\"                         : "app",
+			"BusyPHP\\form\\"               : "src",
+			"BusyPHP\\app\\admin\\assets\\" : "vendor/busyphp/busyphp/src/app/admin/static"
+		}
+	},
+	"extra"       : {
+		"branch-alias" : {
+			"dev-master" : "1.0.x-dev"
+		},
+		"think"        : {
+			"config" : {
+				"busy-form" : "src/config/config.php"
+			}
+		},
+		"busyphp"      : {
+			"manager"  : {
+				"name"  : "自定义表单",
+				"class" : "BusyPHP\\form\\app\\controller\\ManagerController"
+			},
+			"services" : [
+				"BusyPHP\\form\\Service"
+			]
+		}
+	},
+	"config"      : {
+		"preferred-install" : "dist"
+	},
+	"scripts"     : {
+		"post-autoload-dump" : [
+			"@php think service:discover",
+			"@php think vendor:publish",
+			"@php think bp:install --dev composer.json"
+		]
+	}
+}

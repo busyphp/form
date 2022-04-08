@@ -1,0 +1,14 @@
+<extend name="@admin:layout"/>
+<block name="content">
+    <div style="height: 75vh" class="flex flex-column" data-toggle="form-design"></div>
+</block>
+<block name="foot">
+    <script>
+        busyAdmin.ready(function () {
+            $('[data-toggle="form-design"]').height(busyAdmin.app.getContentFrame().height);
+            
+            
+            busyAdmin.require(['{$skin.root}js.js', 'css!{$skin.root}css.css']);
+        });
+    </script>
+</block>
